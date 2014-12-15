@@ -1,9 +1,5 @@
 // Karma configuration
-<<<<<<< HEAD
 // Generated on Mon Dec 15 2014 12:59:30 GMT+0100 (W. Central Africa Standard Time)
-=======
-// Generated on Mon Dec 15 2014 12:56:16 GMT+0100 (W. Central Africa Standard Time)
->>>>>>> 7790aa58eb9fc22eaf9adfd2a5c1f83781b3decc
 
 module.exports = function(config) {
   config.set({
@@ -19,10 +15,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-<<<<<<< HEAD
-=======
 
->>>>>>> 7790aa58eb9fc22eaf9adfd2a5c1f83781b3decc
     ],
 
 
