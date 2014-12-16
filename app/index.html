@@ -7,17 +7,31 @@
     <link rel="stylesheet" type="text/css" href="css/style/main.css">
     <script type="text/javascript" src="js/vendor/angular.js"></script>
     <script type="text/javascript" src="js/vendor/angular-mocks.js"></script>
-    <script type="text/javascript" src="js/myJs/controllers.js"></script>
   </head>
   <body ng-controller="usersController">
-      <h1>ANGULAR MENACE</h1>
-      <dl>
-        <dt>{{name}}</dt>
-        <dd>Age:{{age}}</dd>
-        <dd>Loves: <span ng-repeat="hobby in hobbies">{{hobby}} </span></dd>
-        <dd>Employed: {{employed}}</dd>
-      </dl>
+    <h1>ANGULAR MENACE</h1>
+    <dl>
+      <dt>{{name}}</dt>
+      <dd>Age:{{age}}</dd>
+      <dd>Loves: <span ng-repeat="hobby in hobbies">{{hobby}} </span></dd>
+      <dd>Employed: {{employed}}</dd>
+    </dl>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Hobbies</th>
+        <th>Employment Status</th>
+      </tr>
+      <tr ng-repeat="user in users">
+        <td ng-bind="user.name"></td>
+        <td ng-bind="user.age"></td>
+        <td ng-bind="{{user.hobbies}}"></td>
+        <td><span ng-show="user.employed">Employed</span><span ng-hide="user.employed">Not Employed</span></td>
+      </tr>
+    </table>
     <script type="text/javascript" src="js/vendor/jquery-2.1.1.js"></script>
     <script type="text/javascript" src="js/myJs/app.js"></script>
+    <script type="text/javascript" src="js/myJs/controllers.js"></script>
   </body>
 </html>

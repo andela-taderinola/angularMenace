@@ -14,30 +14,40 @@ describe('GitHub controllers', function () {
       httpGet = _$httpBackend_;
       controller = $controller('usersController', {$scope:scope});
       httpGet.expectGET('../app/data/users.json').
-        respond([ {
-    "name" : "Deji",
-    "age" : 40,
-    "hobbies": ["singing", "dancing", "wooing"],
-    "employed" : true},{
-    "name" : "Finidi",
-    "age" : 39,
-    "hobbies": ["eating", "sleeping", "playing"],
-    "employed" : false}]);
-    }));
+        respond([
+          {
+            "name" : "Deji",
+            "age" : 40,
+            "hobbies": ["singing", "dancing", "wooing"],
+            "employed" : true
+          },
+          {
+            "name" : "Finidi",
+            "age" : 39,
+            "hobbies": ["eating", "sleeping", "playing"],
+            "employed" : false
+          }
+        ]);
+      }));
 
     it('should create users fetched from ../app/data/users.json', function() {
-        expect(scope.users).toBeUndefined();
-        httpGet.flush();
+      expect(scope.users).toBeUndefined();
+      httpGet.flush();
 
-        expect(scope.users).toEqual([ {
-    "name" : "Deji",
-    "age" : 40,
-    "hobbies": ["singing", "dancing", "wooing"],
-    "employed" : true},{
-    "name" : "Finidi",
-    "age" : 39,
-    "hobbies": ["eating", "sleeping", "playing"],
-    "employed" : false}])
+      expect(scope.users).toEqual([
+          {
+            "name" : "Deji",
+            "age" : 40,
+            "hobbies": ["singing", "dancing", "wooing"],
+            "employed" : true
+          },
+          {
+            "name" : "Finidi",
+            "age" : 39,
+            "hobbies": ["eating", "sleeping", "playing"],
+            "employed" : false
+          }
+        ]);
     });
 
     it('should create two users', function() {
