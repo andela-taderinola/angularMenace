@@ -6,8 +6,8 @@ describe('GitHub controllers', function () {
     beforeEach(module('gitUsersApp'));
 
     beforeEach(inject(function ($controller) {
-      scope = {};
-      controller = $controller('usersController', {$scope:scope});
+      var scope = {};
+      var controller = $controller('usersController', {$scope:scope});
     }));
 
     it('should have a name property', function () {
