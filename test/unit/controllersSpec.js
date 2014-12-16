@@ -3,12 +3,57 @@
 describe('GitHub controllers', function () {
   describe ('usersController', function () {
 
+    var scope;
+    var controller;
+    var httpGet;
+
     beforeEach(module('gitUsersApp'));
 
-    beforeEach(inject(function ($controller) {
-      var scope = {};
-      var controller = $controller('usersController', {$scope:scope});
+    beforeEach(inject(function (_$httpBackend_, $rootScope, $controller) {
+      scope = $rootScope.$new();
+      httpGet = _$httpBackend_;
+      controller = $controller('usersController', {$scope:scope});
+      httpGet.expectGET('../app/data/users.json').
+        respond([ {
+    "name" : "Deji",
+    "age" : 40,
+    "hobbies": ["singing", "dancing", "wooing"],
+    "employed" : true},{
+    "name" : "Finidi",
+    "age" : 39,
+    "hobbies": ["eating", "sleeping", "playing"],
+    "employed" : false}]);
     }));
+
+    it('should create users fetched from ../app/data/users.json', function() {
+        expect(scope.users).toBeUndefined();
+        httpGet.flush();
+
+        expect(scope.users).toEqual([ {
+    "name" : "Deji",
+    "age" : 40,
+    "hobbies": ["singing", "dancing", "wooing"],
+    "employed" : true},{
+    "name" : "Finidi",
+    "age" : 39,
+    "hobbies": ["eating", "sleeping", "playing"],
+    "employed" : false}])
+    });
+
+    it('should create two users', function() {
+        httpGet.flush();
+        expect(scope.users.length).toEqual(2);
+    });
+
+    it('should have the first user\'s name to be "Deji"', function() {
+        httpGet.flush();
+        expect(scope.users[0].name).toEqual("Deji");
+    });
+
+    it('should have the last user\'s employed property to be "false"', function() {
+        httpGet.flush();
+        expect(scope.users[1].employed).toBe(false);
+    });
 
     it('should have a name property', function () {
       expect(scope.name).toBeDefined();
@@ -43,7 +88,7 @@ describe('GitHub controllers', function () {
     });
 
     it('employed property should be of type boolean', function () {
-      expect(typeof scope.employed).toEqual(boolean);
+      expect(typeof scope.employed).toEqual("boolean");
     });
 
   });

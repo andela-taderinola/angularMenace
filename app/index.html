@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="gitUsersApp">
   <head>
     <meta charset="utf-8">
     <title>Gitty Awesomeness</title>
-    <link rel="stylesheet" type="text/css" href="app/css/vendor/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="app/css/style/main.css">
-    <script type="text/javascript" src="app/js/vendor/angular.js"></script>
-    <script type="text/javascript" src="app/js/vendor/angular-mocks.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/vendor/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/style/main.css">
+    <script type="text/javascript" src="js/vendor/angular.js"></script>
+    <script type="text/javascript" src="js/vendor/angular-mocks.js"></script>
+    <script type="text/javascript" src="js/myJs/controllers.js"></script>
   </head>
-  <body>
-    <header>
+  <body ng-controller="usersController">
       <h1>ANGULAR MENACE</h1>
-      <h2></h2>
-    </header>
-    <script type="text/javascript" src="app/js/vendor/jquery-2.1.1.js"></script>
-    <script type="text/javascript" src="app/js/myJs/app.js"></script>
+      <dl>
+        <dt>{{name}}</dt>
+        <dd>Age:{{age}}</dd>
+        <dd>Loves: <span ng-repeat="hobby in hobbies">{{hobby}} </span></dd>
+        <dd>Employed: {{employed}}</dd>
+      </dl>
+    <script type="text/javascript" src="js/vendor/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/myJs/app.js"></script>
   </body>
 </html>

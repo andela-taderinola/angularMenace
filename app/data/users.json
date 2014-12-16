@@ -1,0 +1,37 @@
+[
+  {
+    "name" : "Deji",
+    "age" : 40,
+    "hobbies": ["singing", "dancing", "wooing"],
+    "employed" : true
+  },
+
+  {
+    "name" : "Olowu",
+    "age" : 30,
+    "hobbies": ["singing", "fraternizing", "learning"],
+    "employed" : false
+  },
+
+  {
+    "name" : "Mirabel",
+    "age" : 45,
+    "hobbies": ["singing", "laughing", "cooking"],
+    "employed" : true
+  },
+
+  {
+    "name" : "Damilola",
+    "age" : 50,
+    "hobbies": ["coding", "playing", "coding"],
+    "employed" : true
+  },
+
+  {
+    "name" : "Finidi",
+    "age" : 39,
+    "hobbies": ["eating", "sleeping", "playing"],
+    "employed" : false
+  }
+
+];
