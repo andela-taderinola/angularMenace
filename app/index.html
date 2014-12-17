@@ -10,21 +10,24 @@
   </head>
   <body ng-controller="usersController">
     <header class="header">
-      <h1>GIT USER</h1>
+      <h2 class="title">GitHub User-Search</h2>
+      <h5>&copy i_emmanuel and t_aderinola</h5>
     </header>
-    <div class="container">
-      <input ng-model="query" id="inputBox"><button ng-click="userSearch()">Search</button>
-      <ul>
-        <li ng-repeat="user in users | filter: query">
-          <div>
-            <dl>
-              <dt>Name</dt>
-              <dd>login: <span ng-bind="user.login"></span></dd>
-            </dl>
+      <form>
+        <label for="inputBox">Username:</label>
+        <input class="form-control input-lg" ng-model="query" id="inputBox">
+        <button class="form-control btn btn-primary" ng-click="userSearch()">Search</button>
+      </form>
+      <div class="container">
+        <div ng-repeat="user in users | filter: query">
+          <div class="col-md-4">
+            <a href="{{user.html_url}}">
+              <img class="img-thumbnail" ng-src="{{user.avatar_url}}">
+              <p><em ng-bind="user.login"></em></p>
+            </a>
           </div>
-        </li>
-      </ul>
-    </div>
+        </div>
+      </div>
     <script type="text/javascript" src="js/vendor/jquery-2.1.1.js"></script>
     <script type="text/javascript" src="js/myJs/app.js"></script>
     <script type="text/javascript" src="js/myJs/controllers.js"></script>
