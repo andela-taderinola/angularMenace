@@ -13,38 +13,59 @@ describe('GitHub controllers', function () {
       scope = $rootScope.$new();
       httpGet = _$httpBackend_;
       controller = $controller('usersController', {$scope:scope});
-      httpGet.expectGET('https://api.github.com/users/andela-eisaac').
+      httpGet.expectGET('https://api.github.com/search/users').
         respond(
-          {
-            login: "andela-eisaac",
-            name: "Timilehin Aderinola",
-            location: "Ibadan",
-            company: "Isawuru Plc"
-          }
+          [
+            {
+              login: "andela-eisaac",
+              name: "Timilehin Aderinola",
+              location: "Ibadan",
+              company: "Isawuru Plc"
+            },
+            {
+              login: "andela-taderinola",
+              name: "Emmanuel Aderinola",
+              location: "Lagos",
+              company: "DoucheBag Plc"
+            }
+          ]
         );
       }));
 
-    it('should return an object', function() {
-      expect(scope.user).toBeUndefined();
+    it('should return an array', function() {
+      expect(scope.users).toBeUndefined();
       httpGet.flush();
-      expect(scope.user).toEqual(
-          {
-            login: "andela-eisaac",
-            name: "Timilehin Aderinola",
-            location: "Ibadan",
-            company: "Isawuru Plc"
-          }
-      );
+      expect(Array.isArray(scope.users)).toBe(true);
     });
 
-    it('should return an object with name property of "Timilehin Aderinola"', function() {
+    it('should have two embedded objects with keys and values', function () {
       httpGet.flush();
-      expect(scope.user.name).toEqual('Timilehin Aderinola');
+      expect(scope.users).toEqual(
+          [
+            {
+              login: "andela-eisaac",
+              name: "Timilehin Aderinola",
+              location: "Ibadan",
+              company: "Isawuru Plc"
+            },
+            {
+              login: "andela-taderinola",
+              name: "Emmanuel Aderinola",
+              location: "Lagos",
+              company: "DoucheBag Plc"
+            }
+          ]
+        );
     });
 
-    it('should return an object with company property of "Isawuru Plc"', function() {
+    it('name property in the first object should have a value "Timilehin Aderinola"', function() {
       httpGet.flush();
-      expect(scope.user.company).toEqual('Isawuru Plc');
+      expect(scope.users[0].name).toEqual('Timilehin Aderinola');
+    });
+
+    it('company property in the second object should have a value "DoucheBag Plc"', function() {
+      httpGet.flush();
+      expect(scope.users[1].company).toEqual('DoucheBag Plc');
     });
 
   });

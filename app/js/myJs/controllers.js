@@ -3,13 +3,16 @@
 var gitUsersApp = angular.module('gitUsersApp', []);
 
 gitUsersApp.controller('usersController', ['$scope', '$http', function(scope, http) {
-  // scope.name = "Deji";
-  // scope.age = 40;
-  // scope.hobbies = ["singing,", "dancing,", "wooing."];
-  // scope.employed = true;  
+  scope.query = "andela";
+  console.log(scope.query);
 
-  http.get('https://api.github.com/users/andela-eisaac').success(function (data) {
-    scope.user = data;
+  scope.userSearch = function () {
+    http({url: 'https://api.github.com/search/users', method: 'GET', params: {q: scope.query}}).success(function (data) {
+    scope.users = data.items;
+    console.log(scope.users.length);
+    console.log("clicked");
+    
+    scope.query = "";
   });
-
+  };
 }]);

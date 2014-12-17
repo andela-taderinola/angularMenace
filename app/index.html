@@ -12,15 +12,18 @@
     <header class="header">
       <h1>GIT USER</h1>
     </header>
-    
     <div class="container">
-      <a href="{{user.html_url}}"><img class="img-thumbnail" ng-src="{{user.avatar_url}}"></a>
-      <p><span ng-bind="user.name"></span>, <span ng-bind="user.location"></span>.</p>
-      <p>Works at <span ng-bind="user.company"></span>.</p>
-      <p>Email: <a ng-bind="user.email" href="mailto:{{user.email}}"></a></p>
-      <p>He has</p>
-
-
+      <input ng-model="query" id="inputBox"><button ng-click="userSearch()">Search</button>
+      <ul>
+        <li ng-repeat="user in users | filter: query">
+          <div>
+            <dl>
+              <dt>Name</dt>
+              <dd>login: <span ng-bind="user.login"></span></dd>
+            </dl>
+          </div>
+        </li>
+      </ul>
     </div>
     <script type="text/javascript" src="js/vendor/jquery-2.1.1.js"></script>
     <script type="text/javascript" src="js/myJs/app.js"></script>
