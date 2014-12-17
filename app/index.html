@@ -9,31 +9,19 @@
     <script type="text/javascript" src="js/vendor/angular-mocks.js"></script>
   </head>
   <body ng-controller="usersController">
+    <header class="header">
+      <h1>GIT USER</h1>
+    </header>
+    
+    <div class="container">
+      <a href="{{user.html_url}}"><img class="img-thumbnail" ng-src="{{user.avatar_url}}"></a>
+      <p><span ng-bind="user.name"></span>, <span ng-bind="user.location"></span>.</p>
+      <p>Works at <span ng-bind="user.company"></span>.</p>
+      <p>Email: <a ng-bind="user.email" href="mailto:{{user.email}}"></a></p>
+      <p>He has</p>
 
-    <table class="table table-hover table-striped table-bordered table-condensed">
-      <caption>List of Users</caption>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Age</th>
-          <th>Hobbies</th>
-          <th>Employment Status</th>
-        </tr>
-      </thead>
-      <tfoot>
-        <tr>
-          <td colspan=4>Table loaded from /app/data/users.json</td>
-        </tr>
-      </tfoot>
-      <tbody>
-        <tr ng-repeat="user in users">
-          <td ng-bind="user.name"></td>
-          <td ng-bind="user.age"></td>
-          <td ng-bind="{{user.hobbies}}"></td>
-          <td><span ng-show="user.employed">Employed</span><span ng-hide="user.employed">Not Employed</span></td>
-        </tr>
-      </tbody>
-    </table>
+
+    </div>
     <script type="text/javascript" src="js/vendor/jquery-2.1.1.js"></script>
     <script type="text/javascript" src="js/myJs/app.js"></script>
     <script type="text/javascript" src="js/myJs/controllers.js"></script>
