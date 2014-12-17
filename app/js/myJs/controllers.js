@@ -8,7 +8,7 @@ gitUsersApp.controller('usersController', ['$scope', '$http', function(scope, ht
   scope.hobbies = ["singing,", "dancing,", "wooing."];
   scope.employed = true;  
 
-  http.get('../data/users.json').success(function (data) {
+  http.get('data/users.json').success(function (data) {
     scope.users = data;
     console.log(typeof scope.users);
   });
